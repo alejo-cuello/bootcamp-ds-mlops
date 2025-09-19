@@ -29,7 +29,7 @@ El dataset proviene del Open Data del Gobierno de Buenos Aires: [Encuesta anual 
     data['ingreso_total_no_lab'] = pd.qcut(data['ingreso_total_no_lab'], q=4, duplicates='drop')
     ```
 
-- Para la columna `edad` discreticen usando igual distancia con `bins=5`.
+- Para la columna `edad` discreticen usando igual distancia (rango) con `bins=5`.
 
 **_4) Preparación de datos_**
 - Cambien el tipo de dato a `str` de las siguientes columnas: `comuna` y `nhogar`.
