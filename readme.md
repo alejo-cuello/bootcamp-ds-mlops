@@ -1,4 +1,4 @@
-# Proyectos del Bootcamp de Data Science y MLOps
+# Bootcamp de Data Science y MLOps
 
 **Grupo N° 03**
 
@@ -32,19 +32,17 @@ Se recomienda usar Python 3.11 y trabajar dentro de un entorno virtual.
 3. Instalar las dependencias desde el archivo requirements.txt:
    pip install -r requirements.txt
 
----
-
 ## Estructura del repositorio
 
-bootcamp-ds-ml/
-│
-├── nroclase-tematica/         # Código de cada actividad semanal
-│   ...
-├── requirements.txt   # Lista de dependencias
-└── README.md          # Descripción del repositorio (este archivo)
-
----
+bootcamp-ds-mlops/<br>
+│<br>
+├── [nroclase]-[tematica]/ # Código de cada actividad semanal <br>
+│   ... <br>
+├── requirements.txt   # Lista de dependencias <br>
+└── README.md          # Descripción del repositorio <br>
+└── .gitignore          # Archivos que no se suben al repositorio <br>
+└── .gitattributes          # Indicaciones sobre archivos a manejar con Git LFS
 
 ## Agradecimientos
 
-Gracias a los instructores y a todo el personal de EDVai por acompañar y guiar nuestro proceso de aprendizaje
+Gracias a los instructores y a todo el personal de EDVai por acompañar y guiar nuestro proceso de aprendizaje.
