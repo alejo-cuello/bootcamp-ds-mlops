@@ -46,3 +46,28 @@ bootcamp-ds-mlops/<br>
 ## Agradecimientos
 
 Gracias a los instructores y a todo el personal de EDVai por acompañar y guiar nuestro proceso de aprendizaje.
+
+## Estructura recomendada para commits
+
+*\<tipo> (<área>): <descripción corta>*
+
+Tipos recomendados:
+   - feat     → nueva funcionalidad o notebook
+   - fix      → corrección de errores
+   - data     → agregar o actualizar datasets
+   - docs     → documentación (README, apuntes, etc.)
+   - viz      → cambios en visualizaciones
+   - refactor → reestructuración de código
+   - test     → agregar/modificar pruebas
+   - env      → cambios en dependencias/entorno
+
+Ejemplos:
+   - feat(eda): crear notebook para análisis exploratorio inicial
+   - data: agregar dataset de ventas 2023
+   - viz: mejorar visualización de correlación con heatmap
+   - docs: actualizar instrucciones de instalación
+   - fix(model): corregir error en la métrica de precisión
+   - env: actualizar numpy a la versión 1.26
+
+Descripción larga opcional:
+- Usar en el cuerpo del mensaje para dar más contexto
