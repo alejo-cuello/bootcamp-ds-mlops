@@ -74,7 +74,7 @@ El dataset proviene del Open Data del Gobierno de Buenos Aires: [Encuesta anual 
 
 ## 📍 Respuesta esperada 1
 
-Si hacen `status(data)` deberían obtener lo siguiente:
+Si hacen `status(data)` deberían obtener lo siguiente :
 
 ---
 
