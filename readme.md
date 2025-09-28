@@ -2,9 +2,9 @@
 
 **Grupo N° 03**
 
-- Adriana Villalobos
-- Gustavo Ledesma
-- Alejo Cuello
+- [Adriana Villalobos](https://github.com/pixelciosa)
+- [Gustavo Ledesma](https://github.com/6ustav0)
+- [Alejo Cuello](https://github.com/alejo-cuello)
 
 Este repositorio contiene todas las actividades desarrolladas durante el Bootcamp de Data Science y MLOps.  
 Cada carpeta corresponde a una clase o temática distinta, donde fuimos aprendiendo las distintas actividades que realiza un Data Scientist.
