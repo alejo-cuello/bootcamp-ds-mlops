@@ -1,1 +1,9 @@
 .venv
+.env
+env/
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
