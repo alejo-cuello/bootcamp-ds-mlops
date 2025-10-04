@@ -2,6 +2,9 @@
 .env
 env/
 
+### Jupyter Notebooks ###
+.ipynb_checkpoints/
+
 ### macOS ###
 # General
 .DS_Store
