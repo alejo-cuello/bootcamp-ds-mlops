@@ -128,3 +128,5 @@ websocket-client==1.8.0
 widgetsnbextension==4.0.14
 yellowbrick==1.5
 plotnine==0.15.0
+ydata_profiling==4.17.0
+plotly==6.3.1
