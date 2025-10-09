@@ -8,23 +8,23 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-MODEL_PATH = "07-api/modelo/rf.pkl"
+MODEL_PATH = "./modelo/rf.pkl"
 with open(MODEL_PATH, "rb") as f:
     model = pickle.load(f)
   
-COLUMNS_PATH = "07-api/modelo/data_columns.pickle"
+COLUMNS_PATH = "./modelo/data_columns.pickle"
 with open(COLUMNS_PATH, 'rb') as handle:
     ohe_tr = pickle.load(handle)
 
-BINS_PH_PATH = '07-api/modelo/saved_bins_ph.pickle'
+BINS_PH_PATH = './modelo/saved_bins_ph.pickle'
 with open(BINS_PH_PATH, 'rb') as handle:
     new_saved_bins_ph = pickle.load(handle)
 
-BINS_SULFATE_PATH = '07-api/modelo/saved_bins_sulfate.pickle'
+BINS_SULFATE_PATH = './modelo/saved_bins_sulfate.pickle'
 with open(BINS_SULFATE_PATH, 'rb') as handle:
     new_saved_bins_sulfate = pickle.load(handle)
 
-BINS_TRIHALOMETHANES_PATH = '07-api/modelo/saved_bins_trihalomethanes.pickle'
+BINS_TRIHALOMETHANES_PATH = './modelo/saved_bins_trihalomethanes.pickle'
 with open(BINS_TRIHALOMETHANES_PATH, 'rb') as handle:
     new_saved_bins_trihalomethanes = pickle.load(handle)
 
