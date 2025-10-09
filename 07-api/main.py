@@ -1,6 +1,7 @@
 import pickle
 import pandas as pd
 import uvicorn
+import os
 
 from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
@@ -8,25 +9,26 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+def load_pickle_file(path, description):
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"{description} file not found at path: {path}")
+    with open(path, "rb") as f:
+        return pickle.load(f)
+
 MODEL_PATH = "./modelo/rf.pkl"
-with open(MODEL_PATH, "rb") as f:
-    model = pickle.load(f)
-  
+model = load_pickle_file(MODEL_PATH, "Model")
+
 COLUMNS_PATH = "./modelo/data_columns.pickle"
-with open(COLUMNS_PATH, 'rb') as handle:
-    ohe_tr = pickle.load(handle)
+ohe_tr = load_pickle_file(COLUMNS_PATH, "Columns info")
 
 BINS_PH_PATH = './modelo/saved_bins_ph.pickle'
-with open(BINS_PH_PATH, 'rb') as handle:
-    new_saved_bins_ph = pickle.load(handle)
+new_saved_bins_ph = load_pickle_file(BINS_PH_PATH, "Bins for PH")
 
 BINS_SULFATE_PATH = './modelo/saved_bins_sulfate.pickle'
-with open(BINS_SULFATE_PATH, 'rb') as handle:
-    new_saved_bins_sulfate = pickle.load(handle)
+new_saved_bins_sulfate = load_pickle_file(BINS_SULFATE_PATH, "Bins for Sulfate")
 
 BINS_TRIHALOMETHANES_PATH = './modelo/saved_bins_trihalomethanes.pickle'
-with open(BINS_TRIHALOMETHANES_PATH, 'rb') as handle:
-    new_saved_bins_trihalomethanes = pickle.load(handle)
+new_saved_bins_trihalomethanes = load_pickle_file(BINS_TRIHALOMETHANES_PATH, "Bins for Trihalomethanes")
 
 class Answer(BaseModel):
     ph: float
