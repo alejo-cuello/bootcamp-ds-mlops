@@ -48,9 +48,10 @@ def predict_water_potability(answer: Answer):
 
     answer_dict = jsonable_encoder(answer)
     
-    # Tuve que cambiar la siguiente línea, preguntar al profe por qué no me funcionó la otra
-    # single_instance = pd.DataFrame.from_dict(answer_dict)
-    single_instance = pd.DataFrame([answer_dict], index=[0])
+    for key, value in answer_dict.items():
+        answer_dict[key] = [value]
+    
+    single_instance = pd.DataFrame.from_dict(answer_dict)
 
     single_instance["ph"] = single_instance["ph"].astype(float)
     single_instance["ph"] = pd.cut(single_instance["ph"], new_saved_bins_ph, include_lowest=True)
