@@ -1,5 +1,5 @@
-import pandas as pd
 import pickle
+import pandas as pd
 import uvicorn
 
 from fastapi import FastAPI
@@ -28,7 +28,7 @@ BINS_TRIHALOMETHANES_PATH = '07-api/modelo/saved_bins_trihalomethanes.pickle'
 with open(BINS_TRIHALOMETHANES_PATH, 'rb') as handle:
     new_saved_bins_trihalomethanes = pickle.load(handle)
 
-class Answer(BaseModel):  # Completar
+class Answer(BaseModel):
     ph: float
     Hardness: float
     Solids: float
@@ -44,8 +44,31 @@ async def root():
     return {"message": "Grupo 02 levantando su primera API"}
 
 @app.post("/prediccion")
-def predict_water_potability(answer: Answer): # Completar
-    return {"message": "Completar"} # Completar
+def predict_water_potability(answer: Answer):
+
+    answer_dict = jsonable_encoder(answer)
+    
+    # Tuve que cambiar la siguiente línea, preguntar al profe por qué no me funcionó la otra
+    # single_instance = pd.DataFrame.from_dict(answer_dict)
+    single_instance = pd.DataFrame([answer_dict], index=[0])
+
+    single_instance["ph"] = single_instance["ph"].astype(float)
+    single_instance["ph"] = pd.cut(single_instance["ph"], new_saved_bins_ph, include_lowest=True)
+    
+    single_instance["Sulfate"] = single_instance["Sulfate"].astype(float)
+    single_instance["Sulfate"] = pd.cut(single_instance["Sulfate"], new_saved_bins_sulfate, include_lowest=True)
+
+    single_instance["Trihalomethanes"] = single_instance["Trihalomethanes"].astype(float)
+    single_instance["Trihalomethanes"] = pd.cut(single_instance["Trihalomethanes"], new_saved_bins_sulfate, include_lowest=True)
+
+    single_instance_ohe = pd.get_dummies(single_instance).reindex(columns = ohe_tr).fillna(0)
+    prediction = model.predict(single_instance_ohe)
+    
+    score = int(prediction[0])
+
+    response = { "score": score }
+
+    return response
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
