@@ -60,7 +60,7 @@ def predict_water_potability(answer: Answer):
     single_instance["Sulfate"] = pd.cut(single_instance["Sulfate"], new_saved_bins_sulfate, include_lowest=True)
 
     single_instance["Trihalomethanes"] = single_instance["Trihalomethanes"].astype(float)
-    single_instance["Trihalomethanes"] = pd.cut(single_instance["Trihalomethanes"], new_saved_bins_sulfate, include_lowest=True)
+    single_instance["Trihalomethanes"] = pd.cut(single_instance["Trihalomethanes"], new_saved_bins_trihalomethanes, include_lowest=True)
 
     single_instance_ohe = pd.get_dummies(single_instance).reindex(columns = ohe_tr).fillna(0)
     prediction = model.predict(single_instance_ohe)
