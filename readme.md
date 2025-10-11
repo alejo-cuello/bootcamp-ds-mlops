@@ -38,6 +38,7 @@ bootcamp-ds-mlops/<br>
 │<br>
 ├── [nroclase]-[tematica]/ # Código de cada actividad semanal <br>
 │   ... <br>
+├── ejercicios-de-ejemplo   # Ejercicios que vemos en las clases sincrónicas <br>
 ├── requirements.txt   # Lista de dependencias <br>
 └── README.md          # Descripción del repositorio <br>
 └── .gitignore          # Archivos que no se suben al repositorio <br>
