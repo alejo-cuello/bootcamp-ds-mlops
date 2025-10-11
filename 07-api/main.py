@@ -42,13 +42,15 @@ class Answer(BaseModel):
     Turbidity: float
 
 @app.get("/")
-async def root():
+async def root(): #Async permite que la respuesta sea asíncrona, la respuesta puede demorar. Por lo tanto, el cliente debe preparar su código para esperar.
     return {"message": "Grupo 02 levantando su primera API"}
 
 @app.post("/prediccion")
 def predict_water_potability(answer: Answer):
+# def predict_water_potability(answer: list[Answer]): #Para recibir arreglos de data
 
     answer_dict = jsonable_encoder(answer)
+    # answer_dict = [jsonable_encoder(item) for item in answer]
     
     for key, value in answer_dict.items():
         answer_dict[key] = [value]
@@ -68,6 +70,7 @@ def predict_water_potability(answer: Answer):
     prediction = model.predict(single_instance_ohe)
     
     score = int(prediction[0])
+    # score = prediction.tolist()
 
     response = { "score": score }
 
