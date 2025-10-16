@@ -17,6 +17,13 @@ PARAM_NAMES = {
 
 # with open("./model/columns.pkl", "wb") as handle:
 #     columns_ohe = pickle.load(handle)
+
+# Tienen que adaptar los datos de input respecto a los datos que recibe el modelo. Entonces tienen que agregarle / reformatear el nombre de las columnas.
+#     single_instance = pd.DataFrame.from_dict(answer_dict)
+#     # Reformat columns
+#     single_instance_ohe = pd.get_dummies(single_instance).reindex(columns = ohe_tr).fillna(0)
+#     prediction = model.predict(single_instance_ohe)
+
     
 def predict(*args):
     return "Mock"
