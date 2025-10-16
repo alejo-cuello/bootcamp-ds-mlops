@@ -95,4 +95,4 @@ Nos basamos en el dataset de Kaggle: [Airline Passenger Satisfaction](https://ww
     ```
 
 - Repliquen esta interfaz gráfica, y considere los valores de los componente que vos creas adecuado.
-  ![Interfaz gráfica](interfaz.png)
+  ![Interfaz gráfica](../ejercicios-de-ejemplo/08/interfaz.PNG)
