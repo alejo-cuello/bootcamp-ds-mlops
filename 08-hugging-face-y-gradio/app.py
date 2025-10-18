@@ -2,7 +2,6 @@ import gradio as gr
 import json
 import pandas as pd
 import pickle
-# from pydantic import BaseModel
 
 PARAM_NAMES = {
     "Age",
@@ -13,14 +12,6 @@ PARAM_NAMES = {
     "Checkin"   
 }
 
-# class Answer(BaseModel): 
-#     Age:int
-#     Class:int
-#     Wifi:int
-#     Booking:int
-#     Seat:int
-#     Checkin:int
-
 with open("08-hugging-face-y-gradio/model/rf.pkl", "rb") as handle:
     model = pickle.load(handle)
 
@@ -29,15 +20,17 @@ with open("08-hugging-face-y-gradio/model/categories_ohe.pkl", "rb") as handle:
 
 with open("08-hugging-face-y-gradio/model/min_max_input_values.json", "r") as handle:
     min_max_input_values = json.load(handle)
-
-# Tienen que adaptar los datos de input respecto a los datos que recibe el modelo. Entonces tienen que agregarle / reformatear el nombre de las columnas.
-# single_instance = pd.DataFrame.from_dict(answer_dict)
-# # Reformat columns
-# single_instance_ohe = pd.get_dummies(single_instance).reindex(columns = columns_ohe).fillna(0)
-# prediction = model.predict(single_instance_ohe)
     
 def predict(*args):
-    return "Mock"
+    keys = ["Age", "Class", "Wifi", "Booking", "Seat", "Checkin"]
+    data_dict = dict(zip(keys, args))
+
+    single_instance = pd.DataFrame([data_dict])
+    single_instance_ohe = pd.get_dummies(single_instance,dtype="int64").reindex(columns=columns_ohe,fill_value=0)
+
+    prediction = model.predict(single_instance_ohe)
+
+    return ("Satisfecho" if prediction == "1.00" else "No Satisfecho")
 
 with gr.Blocks() as demo:
     gr.Markdown(
