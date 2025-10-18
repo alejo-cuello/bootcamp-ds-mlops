@@ -1,6 +1,8 @@
 import gradio as gr
+import json
 import pandas as pd
 import pickle
+# from pydantic import BaseModel
 
 PARAM_NAMES = {
     "Age",
@@ -11,19 +13,28 @@ PARAM_NAMES = {
     "Checkin"   
 }
 
-#TODO: Descomentar cuando estén desarrollados
-# with open("./model/rf.pkl", "wb") as handle:
-#     model = pickle.load(handle)
+# class Answer(BaseModel): 
+#     Age:int
+#     Class:int
+#     Wifi:int
+#     Booking:int
+#     Seat:int
+#     Checkin:int
 
-# with open("./model/columns.pkl", "wb") as handle:
-#     columns_ohe = pickle.load(handle)
+with open("08-hugging-face-y-gradio/model/rf.pkl", "rb") as handle:
+    model = pickle.load(handle)
+
+with open("08-hugging-face-y-gradio/model/categories_ohe.pkl", "rb") as handle:
+    columns_ohe = pickle.load(handle)
+
+with open("08-hugging-face-y-gradio/model/min_max_input_values.json", "r") as handle:
+    min_max_input_values = json.load(handle)
 
 # Tienen que adaptar los datos de input respecto a los datos que recibe el modelo. Entonces tienen que agregarle / reformatear el nombre de las columnas.
-#     single_instance = pd.DataFrame.from_dict(answer_dict)
-#     # Reformat columns
-#     single_instance_ohe = pd.get_dummies(single_instance).reindex(columns = ohe_tr).fillna(0)
-#     prediction = model.predict(single_instance_ohe)
-
+# single_instance = pd.DataFrame.from_dict(answer_dict)
+# # Reformat columns
+# single_instance_ohe = pd.get_dummies(single_instance).reindex(columns = columns_ohe).fillna(0)
+# prediction = model.predict(single_instance_ohe)
     
 def predict(*args):
     return "Mock"
@@ -42,13 +53,38 @@ with gr.Blocks() as demo:
                 """
             )
             
-            #TODO: Revisar mínimos y máximos
-            Age = gr.Slider(label="Edad",minimum = 0,maximum=100,value=50,step=1)
-            Class = gr.Radio(label="Clase",choices=["Business","Eco","Eco Plus"],value="Business")
-            Wifi = gr.Slider(label="Servicio de Wifi",minimum = 0,maximum=5,value=3,step=1)
-            Booking = gr.Slider(label="Facilidad de registro",minimum = 0,maximum=5,value=3,step=1)
-            Seat = gr.Dropdown(label="Comodidad del asiento",choices=[1,2,3,4,5],value=3,multiselect=False)
-            Checkin = gr.Dropdown(label="Experiencia con el checkin",choices=[1,2,3,4,5],value=3,multiselect=False)
+            Age = gr.Slider(
+                label="Edad",
+                minimum=min_max_input_values["Age"]["Min"],
+                maximum=min_max_input_values["Age"]["Max"],
+                value=min_max_input_values["Age"]["Min"],
+                step=1)
+            Class = gr.Radio(
+                label="Clase",
+                choices=["Business","Eco","Eco Plus"],
+                value="Business")
+            Wifi = gr.Slider(
+                label="Servicio de Wifi",
+                minimum=min_max_input_values["Wifi"]["Min"],
+                maximum=min_max_input_values["Wifi"]["Max"],
+                value=min_max_input_values["Wifi"]["Min"],
+                step=1)
+            Booking = gr.Slider(
+                label="Facilidad de registro",
+                minimum=min_max_input_values["Booking"]["Min"],
+                maximum=min_max_input_values["Booking"]["Max"],
+                value=min_max_input_values["Booking"]["Min"],
+                step=1)
+            Seat = gr.Dropdown(
+                label="Comodidad del asiento",
+                choices=range(min_max_input_values["Seat"]["Min"],min_max_input_values["Seat"]["Max"]+1),
+                value=min_max_input_values["Seat"]["Min"],
+                multiselect=False)
+            Checkin = gr.Dropdown(
+                label="Experiencia con el checkin",
+                choices=range(min_max_input_values["Checkin"]["Min"],min_max_input_values["Checkin"]["Max"]+1),
+                value=min_max_input_values["Checkin"]["Min"],
+                multiselect=False)
             
         with gr.Column():
             gr.Markdown(

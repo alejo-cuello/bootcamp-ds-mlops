@@ -1,0 +1,34 @@
+{
+    "Age": {
+        "Min": 7,
+        "Max": 85
+    },
+    "Wifi": {
+        "Min": 0,
+        "Max": 5
+    },
+    "Booking": {
+        "Min": 0,
+        "Max": 5
+    },
+    "Seat": {
+        "Min": 1,
+        "Max": 5
+    },
+    "Checkin": {
+        "Min": 1,
+        "Max": 5
+    },
+    "satisfaction": {
+        "Min": 0,
+        "Max": 1
+    },
+    "Class_Eco": {
+        "Min": 0,
+        "Max": 1
+    },
+    "Class_Eco Plus": {
+        "Min": 0,
+        "Max": 1
+    }
+}
