@@ -30,7 +30,7 @@ def predict(*args):
 
     prediction = model.predict(single_instance_ohe)
 
-    return ("Satisfecho" if prediction == "1.00" else "No Satisfecho")
+    return ("Satisfecho" if prediction == 1 else "No Satisfecho")
 
 with gr.Blocks() as demo:
     gr.Markdown(

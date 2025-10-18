@@ -19,10 +19,6 @@
         "Min": 1,
         "Max": 5
     },
-    "satisfaction": {
-        "Min": 0,
-        "Max": 1
-    },
     "Class_Eco": {
         "Min": 0,
         "Max": 1
