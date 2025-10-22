@@ -2,6 +2,7 @@ import gradio as gr
 import json
 import pandas as pd
 import pickle
+from huggingface_hub import hf_hub_download
 
 PARAM_NAMES = {
     "Age",
@@ -12,13 +13,14 @@ PARAM_NAMES = {
     "Checkin"   
 }
 
-with open("08-hugging-face-y-gradio/model/rf.pkl", "rb") as handle:
-    model = pickle.load(handle)
+model_path = hf_hub_download(repo_id="alejo-cuello/bootcamp-ds-mlops-primer-ejercicio", filename="rf.pkl")
+with open(model_path, "rb") as handle:
+    model = pickle.load(handle) 
 
-with open("08-hugging-face-y-gradio/model/categories_ohe.pkl", "rb") as handle:
+with open("./model/categories_ohe.pkl", "rb") as handle:
     columns_ohe = pickle.load(handle)
 
-with open("08-hugging-face-y-gradio/model/min_max_input_values.json", "r") as handle:
+with open("./model/min_max_input_values.json", "r") as handle:
     min_max_input_values = json.load(handle)
     
 def predict(*args):
