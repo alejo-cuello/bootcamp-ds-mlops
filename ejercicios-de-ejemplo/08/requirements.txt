@@ -2,4 +2,4 @@ gradio
 pandas
 scikit-learn
 numpy
-requests
+json
