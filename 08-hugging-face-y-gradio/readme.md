@@ -1,0 +1,2 @@
+Para ver el funcionamiento de este modelo en Hugging Face, redirigirse a:
+[https://huggingface.co/spaces/alejo-cuello/bootcamp-ds-mlops-primer-ejercicio](https://huggingface.co/spaces/alejo-cuello/bootcamp-ds-mlops-primer-ejercicio)
