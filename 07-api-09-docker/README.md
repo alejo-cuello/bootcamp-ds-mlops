@@ -11,3 +11,8 @@ docker run -p 5000:8000 proyecto_bootcamp_edvai_jueves
 ```
 
 **-p:** publish
+
+# Link del repo en Docker Hub
+
+https://hub.docker.com/repository/docker/alejocuello/bootcampdsmlopsejemplo/general
+
