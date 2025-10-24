@@ -2,6 +2,8 @@
 
 Este ejercicio fue trabajado en la carpeta 07-api-09-docker
 
-# Link del repo en Docker Hub
 
-https://hub.docker.com/repository/docker/alejocuello/bootcampdsmlopsejemplo/general
+Se puede hacer pull del Docker desarrollado ejecutando el siguiente comando:
+```
+docker pull alejocuello/bootcampdsmlopsejemplo:latest
+```
