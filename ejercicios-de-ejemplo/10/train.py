@@ -10,7 +10,7 @@ from mlflow.models.signature import infer_signature
 mlflow.set_experiment(experiment_name="proyecto_bootcamp_ds6_clase_martes")
 
 # 1) Cargamos los datos
-data = pd.read_csv("TravelInsurancePrediction.csv", sep=',', index_col=0)
+data = pd.read_csv("ejercicios-de-ejemplo/07/model/TravelInsurancePrediction.csv", sep=',', index_col=0)
 
 # 2) Preparación de la data
 class_map = {'No':0, 'Yes':1}
@@ -90,5 +90,4 @@ mlflow.sklearn.log_model(
     signature=signature,
     input_example=input_example,
     registered_model_name='travel_insurance'
-
 )
