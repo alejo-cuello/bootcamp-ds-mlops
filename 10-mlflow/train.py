@@ -34,8 +34,8 @@ data = pd.get_dummies(data)
 
 
 # 3) Clasificación
-data_x = data.drop('Target', axis=1)
-data_y = data['Target']
+data_x = data.drop('Target', axis=1).values
+data_y = data['Target'].values
 
 x_train, x_test, y_train, y_test = train_test_split(data_x, data_y, test_size=test_size)
 
@@ -55,23 +55,24 @@ accuracy_test = accuracy_score(y_test, y_test_pred)
 mlflow.log_param("Tamaño dataset", data_x.shape)
 mlflow.log_param("Porcentaje test", test_size)
 mlflow.log_param("Número de estimadores", n_estimators)
-mlflow.log_param("Random state rf", random_state_rf)
-mlflow.log_param("Accuracy train", accuracy_tr)
-mlflow.log_param("Accuracy test", accuracy_test)
+# Guardar métricas solicitadas
+mlflow.log_metric("Random state rf", random_state_rf)
+mlflow.log_metric("Accuracy train", accuracy_tr)
+mlflow.log_metric("Accuracy test", accuracy_test)
 
-# # 4) Guardar el modelo
+# 4) Guardar el modelo
 filename = 'rf.pkl'
 
 signature = infer_signature(x_train, rf.predict(x_train))
 
 columns = data.columns[:-1]
-# x_train_df = pd.DataFrame(x_train, columns=columns)
-# input_example = x_train_df.head(5)
+x_train_df = pd.DataFrame(x_train, columns=columns)
+input_example = x_train_df.head(5)
 
 mlflow.sklearn.log_model(
     sk_model=rf,
     name="random_forest_model",
     signature=signature,
-    # input_example=input_example
+    input_example=input_example
     # registered_model_name='predictive_maintenance_rf_model'
 )
