@@ -2,6 +2,7 @@ import pandas as pd
 import mlflow
 
 logged_model = 'runs:/deb28e98e6944d469e7a9b762c92df9f/random_forest_model'
+# logged_model = 'models:/random_forest_model/1' #Ejemplo de cómo llamar por versión (por stage (mostrado en clases) quedó deprecado)
 loaded_model = mlflow.pyfunc.load_model(logged_model)
 
 # Input data
@@ -27,8 +28,7 @@ aux_data = [[Age, EmploymentType, GraduateOrNot, AnnualIncome, FamilyMembers, Ch
 #     "Type_M": 0
 # }
 
-df = pd.DataFrame(aux_data)
-df = df.astype(object) 
+df = pd.DataFrame(aux_data, dtype=object)
 
 response = loaded_model.predict(df)
 print(response)
