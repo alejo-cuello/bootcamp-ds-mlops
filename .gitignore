@@ -2,6 +2,8 @@
 .env
 env/
 
+*.tar.gz
+
 # Modelo pesado que se subirá directamente a hugging face
 08-hugging-face-y-gradio/model/*.pkl
 

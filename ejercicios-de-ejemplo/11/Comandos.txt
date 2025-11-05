@@ -1,0 +1,35 @@
+Pasos a seguir:
+
+1. Crear y probar tu imagen Docker localmente:  docker build -t rf-model .
+
+2. Construir la imagen Docker:  docker run -d -p 8080:8080 rf-model
+
+3. Probar la imagen localmente
+
+4. Loguearse en AWS CLI: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 021406833539.dkr.ecr.us-east-1.amazonaws.com
+
+5. Crear un repositorio en ECR: aws ecr create-repository --repository-name rf-model --region us-east-1
+
+6. Etiqueta la imagen local para subirla a AWS: docker tag rf-model:latest 021406833539.dkr.ecr.us-east-1.amazonaws.com/rf-model
+
+6. Hacer push de la imagen a Amazon ECR: docker push 021406833539.dkr.ecr.us-east-1.amazonaws.com/rf-model
+
+7. Verificar el manifiesto de la imagen: aws ecr batch-get-image --repository-name rf-model --image-ids imageTag=latest --query 'images[].imageManifestMediaType'
+
+8. Si es:
+
+[
+    "application/vnd.oci.image.index.v1+json"
+]
+
+9. Cambiar a la v2: docker buildx build -t 021406833539.dkr.ecr.us-east-1.amazonaws.com/rf-model:v2-json --output=type=image,push=true,oci-mediatypes=false --provenance=false -<<< 'FROM 021406833539.dkr.ecr.us-east-1.amazonaws.com/rf-model'
+
+11. Comprobar la nueva imagen en AWS
+
+10. Verificar el manifiesto de la imagen: aws ecr batch-get-image --repository-name rf-model --image-ids imageTag=v2-json --query 'images[].imageManifestMediaType'
+
+El resultado debe ser:
+
+[
+    "application/vnd.docker.distribution.manifest.v2+json"
+]
