@@ -18,9 +18,7 @@ El objetivo de este repositorio es documentar nuestro progreso de aprendizaje y 
 Para ejecutar los proyectos de manera local, es necesario instalar las librerías requeridas.  
 Se recomienda usar Python 3.11 y trabajar dentro de un entorno virtual.
 
-1. Clonar este repositorio:
-   git clone https://github.com/tu-usuario/bootcamp-ds-ml.git
-   cd bootcamp-ds-ml
+1. Clonar este repositorio
 
 2. (Opcional, pero recomendado) Crear y activar un entorno virtual:
    python -m venv venv
