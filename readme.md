@@ -6,8 +6,8 @@
 - [Gustavo Ledesma](https://github.com/6ustav0)
 - [Alejo Cuello](https://github.com/alejo-cuello)
 
-Este repositorio contiene todas las actividades desarrolladas durante el Bootcamp de Data Science y MLOps.  
-Cada carpeta corresponde a una clase o temática distinta, donde fuimos aprendiendo las distintas actividades que realiza un Data Scientist.
+Este repositorio contiene todas las actividades desarrolladas durante el Bootcamp de Data Science y MLOps, dictado por [Escuela de Datos Vivos](https://www.escueladedatosvivos.ai/).  
+Cada carpeta corresponde a una clase o temática distinta, donde fuimos aprendiendo las distintas actividades que realiza un Data Scientist. Podés encontrar el trabajo final que hice para este Bootcamp en [este repositorio](https://github.com/alejo-cuello/proyecto-final-bootcamp-ds-mlops).
 
 El objetivo de este repositorio es documentar nuestro progreso de aprendizaje y mantener todos los ejercicios, notebooks y proyectos organizados en un solo lugar.
 
@@ -18,9 +18,7 @@ El objetivo de este repositorio es documentar nuestro progreso de aprendizaje y 
 Para ejecutar los proyectos de manera local, es necesario instalar las librerías requeridas.  
 Se recomienda usar Python 3.11 y trabajar dentro de un entorno virtual.
 
-1. Clonar este repositorio:
-   git clone https://github.com/tu-usuario/bootcamp-ds-ml.git
-   cd bootcamp-ds-ml
+1. Clonar este repositorio
 
 2. (Opcional, pero recomendado) Crear y activar un entorno virtual:
    python -m venv venv
