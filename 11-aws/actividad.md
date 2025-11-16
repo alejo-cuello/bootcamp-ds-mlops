@@ -1,0 +1,1 @@
+Esta actividad la haré directamente en el repositorio del [proyecto final de este Bootcamp](https://github.com/alejo-cuello/proyecto-final-bootcamp-ds-mlops)
